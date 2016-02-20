@@ -121,6 +121,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 933997770}
   spawned: 0
+  enemyCount: 0
   outputManager: {fileID: 1795676269}
 --- !u!114 &14871710
 MonoBehaviour:
@@ -139,6 +140,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 1725468539}
   spawned: 0
+  enemyCount: 0
   outputManager: {fileID: 0}
 --- !u!114 &14871711
 MonoBehaviour:
@@ -157,7 +159,8 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 345275349}
   spawned: 0
-  outputManager: {fileID: 0}
+  enemyCount: 0
+  outputManager: {fileID: 1795676269}
 --- !u!4 &14871712
 Transform:
   m_ObjectHideFlags: 0

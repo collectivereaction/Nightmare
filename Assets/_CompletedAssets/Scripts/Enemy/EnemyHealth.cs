@@ -10,7 +10,6 @@ namespace CompleteProject
         public float sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
         public int scoreValue = 10;                 // The amount added to the player's score when the enemy dies.
         public AudioClip deathClip;                 // The sound to play when the enemy dies.
-        WriteFile writer = new WriteFile();  // Reference to the WriterXMl script
 
         Animator anim;                              // Reference to the animator.
         AudioSource enemyAudio;                     // Reference to the audio source.
@@ -19,12 +18,13 @@ namespace CompleteProject
         public bool isDead = false;                 // Whether the enemy is dead.
         bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
+        //Reference to OutputManager and testLib Library instances
         public OutputManager outputManager;
         public testLib tcp;
 
-
         void Awake ()
         {
+            //Get instance of OutputManager
             outputManager = GameObject.Find("TCP").GetComponent<OutputManager>();
             tcp = outputManager.tcpReturn();
 
@@ -53,18 +53,17 @@ namespace CompleteProject
         public void TakeDamage (int amount, Vector3 hitPoint)
         {
             // If the enemy is dead...
-            if(isDead)
+            if (isDead)
+            {
                 // ... no need to take damage so exit the function.
                 return;
+            }
 
             // Play the hurt sound effect.
             enemyAudio.Play ();
 
             // Reduce the current health by the amount of damage sustained.
             currentHealth -= amount;
-
-            //Write to XML
-            //writer.WriteToFile("Player Shot");
             
             // Set the position of the particle system to where the hit was sustained.
             hitParticles.transform.position = hitPoint;
@@ -86,8 +85,7 @@ namespace CompleteProject
             // The enemy is dead.
             isDead = true;
 
-            // Print "Player Scored" to console
-            writer.WriteToFile("Player Scored");
+            // Send "Player Scored" to socket
             tcp.sendData("Player Scored");
 
             // Turn the collider into a trigger so shots can pass through it.

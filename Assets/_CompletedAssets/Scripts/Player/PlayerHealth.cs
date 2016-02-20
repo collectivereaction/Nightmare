@@ -15,19 +15,21 @@ namespace CompleteProject
         public AudioClip deathClip;                                 // The audio clip to play when the player dies.
         public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
         public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
-        WriteFile writer = new WriteFile();
 
         Animator anim;                                              // Reference to the Animator component.
         AudioSource playerAudio;                                    // Reference to the AudioSource component.
         PlayerMovement playerMovement;                              // Reference to the player's movement.
         PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
-        public bool isDead;                                                // Whether the player is dead.
-        public bool damaged;                                               // True when the player gets damaged.
+        bool isDead;                                                // Whether the player is dead.
+        bool damaged;                                               // True when the player gets damaged.
 
+        //Reference to OutputManager and testLib Library instances
         public OutputManager outputManager;
         public testLib tcp;
+
         void Awake ()
         {
+            //Get instance of OutputManager
             outputManager = GameObject.Find("TCP").GetComponent<OutputManager>();
             tcp = outputManager.tcpReturn();
 
@@ -41,7 +43,6 @@ namespace CompleteProject
             currentHealth = startingHealth;
         }
 
-
         void Update ()
         {
             // If the player has just been damaged...
@@ -49,7 +50,8 @@ namespace CompleteProject
             {
                 // ... set the colour of the damageImage to the flash colour.
                 damageImage.color = flashColour;
-                writer.WriteToFile("Player Damaged");
+
+                //Send "Player Damaged" to socket
                 tcp.sendData("Player Damaged");
             }
             // Otherwise...
@@ -66,8 +68,6 @@ namespace CompleteProject
 
         public void TakeDamage (int amount)
         {
-
-
             // Set the damaged flag so the screen will flash.
             damaged = true;
 
@@ -109,11 +109,8 @@ namespace CompleteProject
             playerMovement.enabled = false;
             playerShooting.enabled = false;
 
-            writer.WriteToFile("Player Died");
             tcp.sendData("Player Died");
-
         }
-
 
         public void RestartLevel ()
         {

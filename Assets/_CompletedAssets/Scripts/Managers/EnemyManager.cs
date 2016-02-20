@@ -10,14 +10,17 @@ namespace CompleteProject
         public float spawnTime = 3f;            // How long between each spawn.
         public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
         public bool spawned = false;
+        public int enemyCount = 0;
 
         WriteFile writer = new WriteFile();
 
+        //Reference to OutputManager and testLib Library instances
         public OutputManager outputManager;
         public testLib tcp;
 
         void Start ()
         {
+            //Get instance of OutputManager
             outputManager = GameObject.Find("TCP").GetComponent<OutputManager>();
             tcp = outputManager.tcpReturn();
 
@@ -30,10 +33,8 @@ namespace CompleteProject
         {
             // If the player has no health left...
             if(playerHealth.currentHealth <= 0f)
-            {
                 // ... exit the function.
                 return;
-            }
 
             // Find a random index between zero and one less than the number of spawn points.
             int spawnPointIndex = Random.Range (0, spawnPoints.Length);
@@ -41,8 +42,7 @@ namespace CompleteProject
             // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
             Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
-            //Print "Enemy Spawned" to Console.
-            writer.WriteToFile("Enemy Spawned");
+            //Send Enemy Spawned to socket
             tcp.sendData("Enemy Spawned");
         }
     }
