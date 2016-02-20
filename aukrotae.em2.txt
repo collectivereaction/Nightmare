@@ -1,0 +1,45 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#	modified:   .vs/Nightmare/v14/.suo
+#	deleted:    Assets/Plugins/Connector.dll
+#	deleted:    Assets/Plugins/Connector.dll.meta
+#	modified:   Assets/_CompletedAssets/Prefabs/Hellephant.prefab
+#	modified:   Assets/_CompletedAssets/Prefabs/ZomBear.prefab
+#	modified:   Assets/_CompletedAssets/Scenes/Level 01 5.x.unity
+#	modified:   Assets/_CompletedAssets/Scripts/Enemy/EnemyHealth.cs
+#	modified:   Assets/_CompletedAssets/Scripts/Managers/EnemyManager.cs
+#	deleted:    Assets/_CompletedAssets/Scripts/Managers/LinkSyncSCR.cs
+#	new file:   Assets/_CompletedAssets/Scripts/Managers/WriteFile.cs
+#	renamed:    Assets/_CompletedAssets/Scripts/Managers/LinkSyncSCR.cs.meta -> Assets/_CompletedAssets/Scripts/Managers/WriteFile.cs.meta
+#	modified:   Assets/_CompletedAssets/Scripts/Player/PlayerHealth.cs
+#	new file:   Data/Game_Output.xlsx
+#	new file:   Data/Game_Output.xml
+#	new file:   Data/Output.txt
+#	new file:   Data/Output.xml
+#	modified:   Library/CurrentLayout.dwlt
+#	modified:   Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+#	modified:   Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
+#	modified:   Library/ScriptAssemblies/Assembly-CSharp.dll
+#	modified:   Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+#	modified:   Library/assetDatabase3
+#	modified:   Library/expandedItems
+#	modified:   Library/metadata/00/00000000000000004000000000000000
+#	modified:   Library/metadata/00/00000000000000006100000000000000
+#	renamed:    Library/metadata/cd/cd09153caa46b3d4d9727e8bb0d9587b -> Library/metadata/21/219b5db5df494ac4a9e2b231d11db837
+#	renamed:    Library/metadata/cd/cd09153caa46b3d4d9727e8bb0d9587b.info -> Library/metadata/21/219b5db5df494ac4a9e2b231d11db837.info
+#	modified:   Library/metadata/54/548c56f4bcf4db24b8aa057e9846a005.info
+#	modified:   Library/metadata/8b/8bf862ffeb7e74943a1729f1cff11eb4
+#	deleted:    Library/metadata/a7/a7eead9fa3e5faf46958397097c37895
+#	deleted:    Library/metadata/a7/a7eead9fa3e5faf46958397097c37895.info
+#	modified:   Library/metadata/aa/aa10cc87aff30c04dbe0aa648f5b6adc
+#	modified:   Library/metadata/c3/c32067ea884548644b13cf9baddd4573
+#	modified:   Library/metadata/ea/ea3c2728ef33e3a4d99527a86cda6465.info
+#	modified:   Library/shadercompiler-UnityShaderCompiler.exe1.log
+#	modified:   Nightmare.CSharp.Editor.csproj
+#	modified:   Nightmare.CSharp.csproj
+#	new file:   Output.txt
+#
+
