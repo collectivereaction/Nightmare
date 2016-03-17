@@ -46,6 +46,7 @@ namespace CompleteProject
         void Update ()
         {
             // If the player has just been damaged...
+            healthSlider.value = currentHealth;
             if(damaged)
             {
                 // ... set the colour of the damageImage to the flash colour.
@@ -87,6 +88,11 @@ namespace CompleteProject
                 Death();
                 damaged = false;
             }
+        }
+
+        public void Barf ()
+        {
+            currentHealth -= 1;
         }
 
 
