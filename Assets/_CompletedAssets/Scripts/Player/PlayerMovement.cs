@@ -7,7 +7,6 @@ namespace CompleteProject
     {
         public float speed = 6f;            // The speed that the player will move at.
 
-
         Vector3 movement;                   // The vector to store the direction of the player's movement.
         Animator anim;                      // Reference to the animator component.
         Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
@@ -45,18 +44,11 @@ namespace CompleteProject
             Animating (h, v);
         }
 
-        public void posPSpeed()
+        // Called by InputManager to change the movement with a specified value
+        public void changePSpeed(int value)
         {
-            speed += 1f;
-            Debug.Log(speed);
-        }
-
-        public void negPSpeed()
-        {
-            if(speed > 1f)
-            {
-                speed -= 1f;
-            }  
+            if ( speed > value && speed < 12 )
+                speed += value;
         }
 
         void Move (float h, float v)

@@ -90,15 +90,12 @@ namespace CompleteProject
             }
         }
 
-        public void negPHealth ()
+        // Called by InputManager to change the health given a specified value
+        public void changePHealth(int value)
         {
-            currentHealth -= 10;
+            if ( currentHealth - value > 0 && currentHealth + value <= startingHealth )
+                currentHealth += value;
         }
-        public void posPHealth ()
-        {
-            currentHealth += 10;
-        }
-
 
         public void Death ()
         {
@@ -119,6 +116,7 @@ namespace CompleteProject
             playerMovement.enabled = false;
             playerShooting.enabled = false;
 
+            // Send game event "Player Died" to the server
             tcp.sendData("Player Died");
         }
 
