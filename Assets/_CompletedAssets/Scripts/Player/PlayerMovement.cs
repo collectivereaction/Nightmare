@@ -45,9 +45,9 @@ namespace CompleteProject
         }
 
         // Called by InputManager to change the movement with a specified value
-        public void changePSpeed(int value)
+        public void changePSpeed(float value)
         {
-            if ( speed > value && speed < 12 )
+            if ( speed + value >= 0 && speed < 12 )
                 speed += value;
         }
 

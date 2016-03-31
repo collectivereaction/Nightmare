@@ -37,7 +37,7 @@ namespace CompleteProject
             string[] method = str.Split(' ');
             Debug.Log("method: " + method[0] + ", value: " + method[1]);
             // Value for method argument
-            int val = Int32.Parse(method[1]);
+            double val = Double.Parse(method[1]);
 
             
 
@@ -45,9 +45,9 @@ namespace CompleteProject
             string caseSwitch = method[0];
 
             if (caseSwitch.Contains("PH"))
-                playerHealth.changePHealth(val);
+                playerHealth.changePHealth((int)val);
             else if (str.Contains("PS"))
-                playerMovement.changePSpeed(val);
+                playerMovement.changePSpeed((float)val);
             //else if (str.Contains("PD"))
             //    playerShooting.posPDamage();
             //else if (str.Contains("ED"))
