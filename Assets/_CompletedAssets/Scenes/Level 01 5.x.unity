@@ -1114,7 +1114,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1197,7 +1197,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 1
-  m_Color: {r: 0.7649088, g: 0.7205882, b: 1, a: 1}
+  m_Color: {r: 0.6430795, g: 0.5869377, b: 0.86764705, a: 1}
   m_Intensity: 0.27170587
   m_Range: 10
   m_SpotAngle: 30
@@ -1676,6 +1676,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outputManager: {fileID: 1795676269}
   playerHealth: {fileID: 2023876516}
+  playerMovement: {fileID: 1641232235}
+  enemyHealth: {fileID: 11400002, guid: e5171f72421770240bd7c3989fe351e3, type: 2}
+  enemyMovement: {fileID: 11400000, guid: e5171f72421770240bd7c3989fe351e3, type: 2}
+  playerShooting: {fileID: 1641232234}
+  enemyAttack: {fileID: 11400004, guid: e5171f72421770240bd7c3989fe351e3, type: 2}
 --- !u!4 &773895364
 Transform:
   m_ObjectHideFlags: 0
@@ -2902,7 +2907,7 @@ Prefab:
       objectReference: {fileID: 1394906873}
     - target: {fileID: 10800002, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
       propertyPath: m_BounceIntensity
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8200000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
       propertyPath: panLevelCustomCurve.m_RotationOrder
@@ -2943,6 +2948,18 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1641232234 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11400000, guid: 4e5a0d387dc27394b81600988ad0216f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1641232233}
+  m_Script: {fileID: 11500000, guid: 6c83720df9acb89488dbf2c0dbd3ad78, type: 3}
+--- !u!114 &1641232235 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11400002, guid: 4e5a0d387dc27394b81600988ad0216f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1641232233}
+  m_Script: {fileID: 11500000, guid: 9b2268f9c7df8764aa2e92dbf55b5ae1, type: 3}
 --- !u!1 &1667778075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3278,6 +3295,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outputManager: {fileID: 1795676269}
   playerHealth: {fileID: 0}
+  playerMovement: {fileID: 0}
+  enemyHealth: {fileID: 0}
+  enemyMovement: {fileID: 0}
+  playerShooting: {fileID: 0}
+  enemyAttack: {fileID: 0}
 --- !u!1 &1837071935
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,6 +48,8 @@ namespace CompleteProject
                 // ... shoot the gun.
                 Shoot ();
             }
+
+            
 #else
             // If there is input on the shoot direction stick and it's time to fire...
             if ((CrossPlatformInputManager.GetAxisRaw("Mouse X") != 0 || CrossPlatformInputManager.GetAxisRaw("Mouse Y") != 0) && timer >= timeBetweenBullets)
@@ -64,6 +66,20 @@ namespace CompleteProject
             }
         }
 
+        public void posPDamage()
+        {
+            //damagePerShot += 5;
+            gunLight.color = Color.red;
+        }
+
+        public void negPDamage()
+        {
+            if (damagePerShot > 5)
+            {
+                damagePerShot -= 5;
+            }
+                
+        }
 
         public void DisableEffects ()
         {

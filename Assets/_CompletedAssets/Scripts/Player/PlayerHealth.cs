@@ -90,9 +90,13 @@ namespace CompleteProject
             }
         }
 
-        public void Barf ()
+        public void negPHealth ()
         {
-            currentHealth -= 1;
+            currentHealth -= 10;
+        }
+        public void posPHealth ()
+        {
+            currentHealth += 10;
         }
 
 

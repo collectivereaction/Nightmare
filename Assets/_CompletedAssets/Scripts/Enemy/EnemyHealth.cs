@@ -49,6 +49,17 @@ namespace CompleteProject
             }
         }
 
+        public void posEHealth()
+        {
+            startingHealth += 50;
+            currentHealth += 50;
+        }
+
+        public void negEHealth()
+        {
+            startingHealth -= 50;
+            currentHealth -= 50;
+        }
 
         public void TakeDamage (int amount, Vector3 hitPoint)
         {

@@ -69,6 +69,19 @@ namespace CompleteProject
             }
         }
 
+        public void posEDamage()
+        {
+            attackDamage += 2;
+        }
+
+        public void negEDamage()
+        {
+            if(attackDamage > 2)
+            {
+                attackDamage -= 2;
+            }
+            
+        }
 
         void Attack ()
         {

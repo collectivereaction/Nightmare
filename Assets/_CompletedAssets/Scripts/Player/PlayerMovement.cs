@@ -45,6 +45,19 @@ namespace CompleteProject
             Animating (h, v);
         }
 
+        public void posPSpeed()
+        {
+            speed += 1f;
+            Debug.Log(speed);
+        }
+
+        public void negPSpeed()
+        {
+            if(speed > 1f)
+            {
+                speed -= 1f;
+            }  
+        }
 
         void Move (float h, float v)
         {
