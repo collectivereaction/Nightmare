@@ -93,7 +93,7 @@ namespace CompleteProject
         // Called by InputManager to change the health given a specified value
         public void changePHealth(int value)
         {
-            if ( currentHealth - value > 0 && currentHealth + value <= startingHealth )
+            if ( currentHealth + value > 0 && currentHealth + value <= startingHealth )
                 currentHealth += value;
         }
 

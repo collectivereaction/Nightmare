@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnitySampleAssets.CrossPlatformInput;
+using TCP;
 
 namespace CompleteProject
 {
@@ -14,6 +15,12 @@ namespace CompleteProject
         int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
         float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 #endif
+        //Reference to OutputManager and testLib Library instances
+        public OutputManager outputManager;
+        public testLib tcp;
+
+        string pMove = "Player Stopped";
+        Vector3 originPos;
 
         void Awake ()
         {
@@ -21,6 +28,7 @@ namespace CompleteProject
             // Create a layer mask for the floor layer.
             floorMask = LayerMask.GetMask ("Floor");
 #endif
+            originPos = transform.position;
 
             // Set up references.
             anim = GetComponent <Animator> ();
@@ -42,12 +50,26 @@ namespace CompleteProject
 
             // Animate the player.
             Animating (h, v);
+
+            // Send to the sockets when the player moves or stops
+            if (originPos == transform.position && !pMove.Equals("Player Stopped"))
+            {
+                pMove = "Player Stopped";
+                tcp.sendData(pMove);
+
+            }
+            else if (originPos != transform.position && !pMove.Equals("Player Moved"))
+            {
+                pMove = "Player Moved";
+                tcp.sendData(pMove);
+            }
+            originPos = transform.position;
         }
 
         // Called by InputManager to change the movement with a specified value
         public void changePSpeed(float value)
         {
-            if ( speed + value >= 0 && speed < 12 )
+            if ( speed + value > 0 && speed < 12 )
                 speed += value;
         }
 
