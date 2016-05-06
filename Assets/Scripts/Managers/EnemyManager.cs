@@ -7,11 +7,12 @@ namespace CompleteProject
     {
         public PlayerHealth playerHealth;       // Reference to the player's heatlh.
         public GameObject enemy;                // The enemy prefab to be spawned.
-        public float spawnTime = 3f;            // How long between each spawn.
+        public EnemyMovement enemyMovement;
+        public float spawnTime = 3;            // How long between each spawn.
         public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
         public bool spawned = false;
         public int enemyCount = 0;
-
+        public float deltaSpawnTime;
         WriteFile writer = new WriteFile();
 
         //Reference to OutputManager and testLib Library instances
@@ -26,6 +27,7 @@ namespace CompleteProject
 
             // Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
             InvokeRepeating ("Spawn", spawnTime, spawnTime);
+            enemyMovement = enemy.GetComponent<EnemyMovement>();
         }
 
 
@@ -42,8 +44,24 @@ namespace CompleteProject
             // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
             Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
+            //InvokeRepeating("Spawn", spawnTime, deltaSpawnTime );
+
             //Send Enemy Spawned to socket
             tcp.sendData("Enemy Spawned");
+        }
+
+        public void changeESpawnRate(float value)
+        {
+            if (deltaSpawnTime + spawnTime >= 0.00001 && spawnTime + value <= 10f)
+            {
+                deltaSpawnTime = value;
+            }
+                
+        }
+
+        public void changeESpeed(float value)
+        {
+            enemyMovement.changeESpeed(value);
         }
     }
 }

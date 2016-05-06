@@ -24,6 +24,9 @@ namespace CompleteProject
 
         void Awake ()
         {
+            //Get instance of OutputManager
+            outputManager = GameObject.Find("TCP").GetComponent<OutputManager>();
+            tcp = outputManager.tcpReturn();
 #if !MOBILE_INPUT
             // Create a layer mask for the floor layer.
             floorMask = LayerMask.GetMask ("Floor");

@@ -17,43 +17,44 @@ namespace CompleteProject
         public EnemyMovement enemyMovement;
         public PlayerShooting playerShooting;
         public EnemyAttack enemyAttack;
+        public EnemyManager enemyManager;
 
         void Awake()
         {
             outputManager = GameObject.Find("TCP").GetComponent<OutputManager>();
             playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
             playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+            enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+            playerShooting = GameObject.Find("GunBarrelEnd").GetComponent<PlayerShooting>();
+            //enemyMovement = GameObject.Find("ZomBunny").GetComponent<EnemyMovement>();
             tcp = outputManager.tcpReturn();
             tcp.registerListener(this);
         }
 
-        public void apply(byte[] action)
+        public void apply(string action)
         {
             // Get input from the server in the form "method value"
-            var str = System.Text.Encoding.Default.GetString(action);
-            Debug.Log(str);
 
             // Method code
-            string[] method = str.Split(' ');
+            string[] method = action.Split(' ');
             Debug.Log("method: " + method[0] + ", value: " + method[1]);
             // Value for method argument
             double val = Double.Parse(method[1]);
 
-            
 
-            
             string caseSwitch = method[0];
-
             if (caseSwitch.Contains("PH"))
                 playerHealth.changePHealth((int)val);
-            else if (str.Contains("PS"))
+            else if (caseSwitch.Contains("PS"))
                 playerMovement.changePSpeed((float)val);
-            //else if (str.Contains("PD"))
-            //    playerShooting.posPDamage();
-            //else if (str.Contains("ED"))
-            //    enemyAttack.posEDamage();
-            //else if (str.Contains("EH"))
-            //    enemyHealth.posEHealth();
+            else if (caseSwitch.Contains("ESR"))
+                enemyManager.changeESpawnRate((float)val);
+            else if (caseSwitch.Contains("PD"))
+                playerShooting.changePDamage((int)val);
+            else if (caseSwitch.Contains("ES"))
+            {
+                enemyManager.changeESpeed((float)val);
+            }
         }
     }
 }

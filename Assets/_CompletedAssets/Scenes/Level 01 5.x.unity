@@ -117,11 +117,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2023876516}
   enemy: {fileID: 153412, guid: 548c56f4bcf4db24b8aa057e9846a005, type: 2}
+  enemyMovement: {fileID: 0}
   spawnTime: 15
   spawnPoints:
   - {fileID: 933997770}
   spawned: 0
   enemyCount: 0
+  deltaSpawnTime: 0
   outputManager: {fileID: 1795676269}
 --- !u!114 &14871710
 MonoBehaviour:
@@ -136,12 +138,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2023876516}
   enemy: {fileID: 100000, guid: ea3c2728ef33e3a4d99527a86cda6465, type: 2}
+  enemyMovement: {fileID: 0}
   spawnTime: 3
   spawnPoints:
   - {fileID: 1725468539}
   spawned: 0
   enemyCount: 0
-  outputManager: {fileID: 0}
+  deltaSpawnTime: 0
+  outputManager: {fileID: 1795676269}
 --- !u!114 &14871711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,11 +159,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2023876516}
   enemy: {fileID: 100002, guid: e5171f72421770240bd7c3989fe351e3, type: 2}
+  enemyMovement: {fileID: 0}
   spawnTime: 3
   spawnPoints:
   - {fileID: 345275349}
   spawned: 0
   enemyCount: 0
+  deltaSpawnTime: 0
   outputManager: {fileID: 1795676269}
 --- !u!4 &14871712
 Transform:
@@ -1681,6 +1687,7 @@ MonoBehaviour:
   enemyMovement: {fileID: 11400000, guid: e5171f72421770240bd7c3989fe351e3, type: 2}
   playerShooting: {fileID: 1641232234}
   enemyAttack: {fileID: 11400004, guid: e5171f72421770240bd7c3989fe351e3, type: 2}
+  enemyManager: {fileID: 14871711}
 --- !u!4 &773895364
 Transform:
   m_ObjectHideFlags: 0
@@ -2945,6 +2952,10 @@ Prefab:
       propertyPath: inputManager
       value: 
       objectReference: {fileID: 1795676271}
+    - target: {fileID: 11400002, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
+      propertyPath: outputManager
+      value: 
+      objectReference: {fileID: 1795676269}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 2}
   m_IsPrefabParent: 0
@@ -3300,6 +3311,7 @@ MonoBehaviour:
   enemyMovement: {fileID: 0}
   playerShooting: {fileID: 0}
   enemyAttack: {fileID: 0}
+  enemyManager: {fileID: 0}
 --- !u!1 &1837071935
 GameObject:
   m_ObjectHideFlags: 0

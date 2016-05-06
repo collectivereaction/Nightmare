@@ -9,7 +9,8 @@ namespace CompleteProject
         PlayerHealth playerHealth;      // Reference to the player's health.
         EnemyHealth enemyHealth;        // Reference to this enemy's health.
         NavMeshAgent nav;               // Reference to the nav mesh agent.
-
+        public static float speed = 2.0f;
+        public static float speedCheck;
 
         void Awake ()
         {
@@ -18,6 +19,7 @@ namespace CompleteProject
             playerHealth = player.GetComponent <PlayerHealth> ();
             enemyHealth = GetComponent <EnemyHealth> ();
             nav = GetComponent <NavMeshAgent> ();
+            speedCheck = nav.speed;
         }
 
 
@@ -35,6 +37,14 @@ namespace CompleteProject
                 // ... disable the nav mesh agent.
                 nav.enabled = false;
             }
+            speedCheck = nav.speed;
+            nav.speed = 0.0f + speed;
+        }
+
+        public void changeESpeed(float value)
+        {
+            if (value + speedCheck > 0 && value + speedCheck <= (6 * speedCheck))
+                speed += value;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace CompleteProject
         public float timeBetweenBullets = 0.15f;        // The time between each shot.
         public float range = 100f;                      // The distance the gun can fire.
 
-
+        Color linecolor;
         float timer;                                    // A timer to determine when to fire.
         Ray shootRay;                                   // A ray from the gun end forwards.
         RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
@@ -17,7 +17,8 @@ namespace CompleteProject
         ParticleSystem gunParticles;                    // Reference to the particle system.
         LineRenderer gunLine;                           // Reference to the line renderer.
         AudioSource gunAudio;                           // Reference to the audio source.
-        Light gunLight;                                 // Reference to the light component.
+        Light gunLight;                                 // Reference to the light component
+        Color gunColor;
 		public Light faceLight;								// Duh
         float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
 
@@ -32,6 +33,8 @@ namespace CompleteProject
             gunLine = GetComponent <LineRenderer> ();
             gunAudio = GetComponent<AudioSource> ();
             gunLight = GetComponent<Light> ();
+            linecolor = Color.yellow;
+            gunColor = Color.yellow;
 			//faceLight = GetComponentInChildren<Light> ();
         }
 
@@ -48,7 +51,7 @@ namespace CompleteProject
                 // ... shoot the gun.
                 Shoot ();
             }
-
+            gunLine.material.color = gunColor;
             
 #else
             // If there is input on the shoot direction stick and it's time to fire...
@@ -66,20 +69,27 @@ namespace CompleteProject
             }
         }
 
-        public void posPDamage()
+        public void changePDamage(int value)
         {
-            //damagePerShot += 5;
-            gunLight.color = Color.red;
-        }
-
-        public void negPDamage()
-        {
-            if (damagePerShot > 5)
+            Debug.Log("made it here inside changePDamage function");
+            if (damagePerShot + value > 0 )
+                damagePerShot += value;
+            if (value > 0)
             {
-                damagePerShot -= 5;
+                linecolor = Color.red;
+                gunColor = linecolor;
+                Debug.Log("made it here inside changePDamage function  value > 0");
             }
                 
-        }
+            else if (value < 0)
+            {
+                Debug.Log("made it here inside changePDamage function  value < 0");
+                linecolor = Color.green;
+                gunColor = linecolor;
+            }
+         }
+                
+
 
         public void DisableEffects ()
         {
