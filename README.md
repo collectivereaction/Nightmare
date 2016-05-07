@@ -10,3 +10,4 @@ Running the Game
 Socket Library
 - The socket library is a DLL and included as a plugin within Unity
 - The library shouldn't need any changing but if needed, build the library, locate the .dll, delete the current .dll in Unity, and reimport the new .dll
+- The library needs to be built with .NET 3.5, not the default. Research how to build with this version of .NET
