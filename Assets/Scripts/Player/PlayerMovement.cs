@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿// Responsible for managing player movement
+// Ignore mobile code
+
+// ****Consider slowing down music when player is going slower and speeding up
+// music when going faster
+// *possible hint* find the object that plays the music and get the component that changes the speed or pitch
+
+using UnityEngine;
 using UnitySampleAssets.CrossPlatformInput;
 using TCP;
 
@@ -15,10 +22,11 @@ namespace CompleteProject
         int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
         float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 #endif
-        //Reference to OutputManager and testLib Library instances
+        // Reference to OutputManager and testLib Library instances
         public OutputManager outputManager;
         public testLib tcp;
 
+        // Variables to track player movement
         string pMove = "Player Stopped";
         Vector3 originPos;
 
@@ -31,6 +39,7 @@ namespace CompleteProject
             // Create a layer mask for the floor layer.
             floorMask = LayerMask.GetMask ("Floor");
 #endif
+            // Get original starting position
             originPos = transform.position;
 
             // Set up references.
@@ -54,18 +63,20 @@ namespace CompleteProject
             // Animate the player.
             Animating (h, v);
 
+            // ****Currently not implemented in model****
             // Send to the sockets when the player moves or stops
             if (originPos == transform.position && !pMove.Equals("Player Stopped"))
-            {
+            { // Player stopped
                 pMove = "Player Stopped";
                 tcp.sendData(pMove);
 
-            }
+            } // Player moved
             else if (originPos != transform.position && !pMove.Equals("Player Moved"))
             {
                 pMove = "Player Moved";
                 tcp.sendData(pMove);
             }
+            // get last current position
             originPos = transform.position;
         }
 

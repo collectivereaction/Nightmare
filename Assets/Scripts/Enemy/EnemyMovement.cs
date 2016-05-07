@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// Responsible for managing enemy movement
+
+using UnityEngine;
 using System.Collections;
 
 namespace CompleteProject
@@ -41,6 +43,7 @@ namespace CompleteProject
             nav.speed = 0.0f + speed;
         }
 
+        // Change enemy speed called by InputManager
         public void changeESpeed(float value)
         {
             if (value + speedCheck > 0 && value + speedCheck <= (6 * speedCheck))

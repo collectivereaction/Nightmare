@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// Manages player shooting and damage
+
+using UnityEngine;
 using UnitySampleAssets.CrossPlatformInput;
 
 namespace CompleteProject
@@ -35,7 +37,6 @@ namespace CompleteProject
             gunLight = GetComponent<Light> ();
             linecolor = Color.yellow;
             gunColor = Color.yellow;
-			//faceLight = GetComponentInChildren<Light> ();
         }
 
 
@@ -69,27 +70,24 @@ namespace CompleteProject
             }
         }
 
+        // Change damage called by InputManager
+        // ****Consider implementing change in fire rate****
         public void changePDamage(int value)
         {
-            Debug.Log("made it here inside changePDamage function");
             if (damagePerShot + value > 0 )
                 damagePerShot += value;
-            if (value > 0)
+            if (value > 0) // If damage increased, change beam color to red
             {
                 linecolor = Color.red;
                 gunColor = linecolor;
-                Debug.Log("made it here inside changePDamage function  value > 0");
             }
-                
+            // Else change beam color to green
             else if (value < 0)
             {
-                Debug.Log("made it here inside changePDamage function  value < 0");
                 linecolor = Color.green;
                 gunColor = linecolor;
             }
          }
-                
-
 
         public void DisableEffects ()
         {
@@ -98,7 +96,6 @@ namespace CompleteProject
 			faceLight.enabled = false;
             gunLight.enabled = false;
         }
-
 
         void Shoot ()
         {

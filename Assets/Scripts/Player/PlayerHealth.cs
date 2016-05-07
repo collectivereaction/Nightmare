@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// Responible for managing player health
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;

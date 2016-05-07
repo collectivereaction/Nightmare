@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// Responsible for managing enemy attack
+
+using UnityEngine;
 using System.Collections;
 
 namespace CompleteProject
@@ -7,7 +9,6 @@ namespace CompleteProject
     {
         public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
         public int attackDamage = 10;               // The amount of health taken away per attack.
-
 
         Animator anim;                              // Reference to the animator component.
         GameObject player;                          // Reference to the player GameObject.
@@ -26,7 +27,6 @@ namespace CompleteProject
             anim = GetComponent <Animator> ();
         }
 
-
         void OnTriggerEnter (Collider other)
         {
             // If the entering collider is the player...
@@ -37,7 +37,6 @@ namespace CompleteProject
             }
         }
 
-
         void OnTriggerExit (Collider other)
         {
             // If the exiting collider is the player...
@@ -47,7 +46,6 @@ namespace CompleteProject
                 playerInRange = false;
             }
         }
-
 
         void Update ()
         {
@@ -69,6 +67,9 @@ namespace CompleteProject
             }
         }
 
+
+         // **** Enemy attack is currently not implemented ****
+         // Consider implementing similarly to enemy speed within EnemyManager
         public void posEDamage()
         {
             attackDamage += 2;
@@ -80,7 +81,6 @@ namespace CompleteProject
             {
                 attackDamage -= 2;
             }
-            
         }
 
         void Attack ()
